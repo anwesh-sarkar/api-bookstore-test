@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "NODE_ENV=development nodemon --legacy-watch",
     "db:migrate": "knex --knexfile db/knexfile.js migrate:latest",
     "db:rollback": "knex --knexfile db/knexfile.js migrate:rollback",
@@ -22,8 +22,14 @@
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jest-extended": "^0.11.5",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.16",
     "pg": "^8.5.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   }
 }

@@ -17,12 +17,15 @@ module.exports = ({ getUserByEmail }) => {
     } else {
       getUserByEmail(email)
         .then((result) => {
-          if (!result.length)
+          console.log("result: ", result);
+          if (!result.length) {
             throw new ErrorHandler(401, "Invalid password or email address");
+          }
           const hashedPassword = result[0].password;
           const isValid = bcrypt.compareSync(password, hashedPassword);
-          if (!isValid)
+          if (!isValid) {
             throw new ErrorHandler(401, "Invalid password or email address");
+          }
           const token = jwt.sign(
             {
               data: result[0].id,
