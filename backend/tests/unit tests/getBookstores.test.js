@@ -22,13 +22,13 @@ describe("getBookstores", () => {
   //   jest.clearAllMocks();
   // });
   const db = jest.fn();
-  const select = db.mockReturnValue("select");
-  const from = db.mockReturnValue("from");
-  const orderBy = db.mockReturnValue("orderBy");
-  const then = db.then((done) => done(null));
+  const select = db.mockReturnValue("*");
+  const from = db.mockReturnValueOnce("bookstores");
+  const orderBy = db.mockReturnValueOnce("id");
+  // const then = db.then((done) => done(null));
 
   it("something should happen", () => {
-    expect(db()).toBe("select");
-    expect(select()).toBe("select");
+    // expect(db()).toBe("id");
+    expect(select()).toBe("*");
   });
 });
