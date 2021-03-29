@@ -3,7 +3,9 @@ class userToken {
     this.token = token;
   }
 
-  set token(jwt) {
+  set setToken(jwt) {
     this.token = jwt;
   }
 }
+
+module.exports = userToken;

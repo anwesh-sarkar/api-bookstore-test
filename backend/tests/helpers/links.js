@@ -2,7 +2,7 @@ module.exports = {
   homepage: "http://localhost:3001",
   login: "http://localhost:3001/login",
   users: "/users",
-  books: "/books",
+  createBooks: "http://localhost:3001/books",
   bookstores: "/bookstores",
-  bookstoresBooks: "/bookstores-books",
+  addBookToBookstore: "http://localhost:3001/bookstores-books",
 };
