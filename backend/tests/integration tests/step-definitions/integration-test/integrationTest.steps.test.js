@@ -14,25 +14,22 @@ const user = require("../../../helpers/user");
 const { loginOptions } = require("../../../helpers/options");
 const fetch = require("node-fetch");
 const userToken = require("../../../helpers/userToken");
-const knex = require("knex");
+const knexfile = require("../../../../db/knexfile");
+const db = require("knex")(knexfile[process.env.NODE_ENV]);
 
 defineFeature(feature, (test) => {
   let response;
   let book = {};
   let bookstore = {};
-  let bookstoreBook = {};
   const jwt = new userToken();
 
-  // beforeAll(() =>
-  //   knex.migrate
-  //     .rollback()
-  //     .then(() => knex.migrate.latest())
-  //     .then(() => knex.seed.run())
-  // );
+  beforeAll(async () => {
+    await db.migrate.latest().then(() => db.seed.run());
+  });
 
-  // afterAll(() => {
-  //   knex.migrate.rollback().then();
-  // });
+  afterAll(() => {
+    db.migrate.rollback().then();
+  });
 
   test("Successful login", ({ given, when, then }) => {
     given("the user has email and password", () => {

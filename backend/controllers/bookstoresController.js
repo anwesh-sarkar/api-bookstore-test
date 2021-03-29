@@ -1,6 +1,5 @@
 module.exports = (db) => {
   const getBookstores = () => {
-    console.log(db);
     return db
       .select("*")
       .from("bookstores")
