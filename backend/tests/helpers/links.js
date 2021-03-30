@@ -1,8 +1,9 @@
 module.exports = {
   homepage: "http://localhost:3001",
   login: "http://localhost:3001/login",
-  users: "/users",
+  users: "http://localhost:3001/users",
   createBooks: "http://localhost:3001/books",
-  bookstores: "/bookstores",
-  addBookToBookstore: "http://localhost:3001/bookstores-books",
+  bookstores: "http://localhost:3001/bookstores",
+  bookstoresBooks: "http://localhost:3001/bookstores-books",
+  statusBookstoresBooks: "http://localhost:3001/status/bookstores-books",
 };

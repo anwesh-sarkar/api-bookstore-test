@@ -1,4 +1,5 @@
 require("dotenv").config({ path: "../.env" });
+const path = require("path");
 
 module.exports = {
   development: {
@@ -14,6 +15,21 @@ module.exports = {
     },
     seeds: {
       directory: "./seeds",
+    },
+  },
+  test: {
+    client: "pg",
+    connection: {
+      host: "localhost",
+      user: "postgres",
+      password: "June1989",
+      database: "test",
+    },
+    migrations: {
+      directory: path.join(__dirname, "migrations"),
+    },
+    seeds: {
+      directory: path.join(__dirname, "seeds"),
     },
   },
 };

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest",
     "dev": "NODE_ENV=development nodemon --legacy-watch",
     "db:migrate": "knex --knexfile db/knexfile.js migrate:latest",
     "db:rollback": "knex --knexfile db/knexfile.js migrate:rollback",
