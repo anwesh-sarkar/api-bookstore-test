@@ -15,7 +15,7 @@ const user = require("../../../helpers/user");
 const fetch = require("node-fetch");
 const userToken = require("../../../helpers/userToken");
 // const knexfile = require("../../../../db/knexfile");
-// const db = require("knex")(knexfile[test]);
+// const db = require("knex")(knexfile[process.env.NODE_ENV]);
 
 defineFeature(feature, (test) => {
   let response;
@@ -32,7 +32,10 @@ defineFeature(feature, (test) => {
   // });
 
   // afterAll(() => {
-  //   db.migrate.rollback().then();
+  //   db.migrate
+  //     .rollback()
+  //     .then()
+  //     .catch((err) => console.log(err));
   // });
 
   test("Successful login", ({ given, when, then }) => {
@@ -46,7 +49,9 @@ defineFeature(feature, (test) => {
           "Content-type": "application/json",
         },
         body: JSON.stringify(user),
-      }).then((response) => response.json());
+      })
+        .then((response) => response.json())
+        .catch((err) => console.log(err.stack));
     });
     then("the user must be receive a token", () => {
       jwt.setToken = response.token;
@@ -71,7 +76,9 @@ defineFeature(feature, (test) => {
           authorization: jwt.token,
         },
         body: JSON.stringify(book),
-      }).then((response) => response.json());
+      })
+        .then((response) => response.json())
+        .catch((err) => console.log(err.stack));
     });
     then("the book must get added to the Books database", () => {
       book.id = Number(response.id);
@@ -98,7 +105,9 @@ defineFeature(feature, (test) => {
             quantity: book.quantity,
             bookstore_id: bookstore.id,
           }),
-        }).then((response) => response.json());
+        })
+          .then((response) => response.json())
+          .catch((err) => console.log(err.stack));
       }
     );
     then("the book must be added to the Bookstores_books database", () => {
@@ -121,7 +130,9 @@ defineFeature(feature, (test) => {
             authorization: jwt.token,
           },
           body: JSON.stringify({ quantity: quantity }),
-        }).then((response) => response.json());
+        })
+          .then((response) => response.json())
+          .catch((err) => console.log(err.stack));
       }
     );
     then("the quantity on the Bookstores_books database must be 0", () => {
@@ -139,7 +150,9 @@ defineFeature(feature, (test) => {
             "Content-type": "application/json",
             authorization: jwt.token,
           },
-        }).then((response) => response.json());
+        })
+          .then((response) => response.json())
+          .catch((err) => console.log(err.stack));
       }
     );
     then("the book status in the bookstore must be returned", () => {

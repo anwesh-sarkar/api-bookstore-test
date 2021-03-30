@@ -22,7 +22,7 @@ module.exports = {
     connection: {
       host: "localhost",
       user: "postgres",
-      password: "June1989",
+      password: "postgres",
       database: "test",
     },
     migrations: {

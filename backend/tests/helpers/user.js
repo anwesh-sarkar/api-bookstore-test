@@ -1,5 +1,5 @@
 const user = {
-  email: "Emil69@hotmail.com",
+  email: "Rosendo0@hotmail.com",
   password: "test",
 };
 
