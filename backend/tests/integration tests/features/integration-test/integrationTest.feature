@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Integration Test
   Scenario: Successful login
     Given the user has email and password
     When the user logs in
